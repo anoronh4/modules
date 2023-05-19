@@ -41,3 +41,42 @@ workflow test_kallisto_quant_single_end {
         []
     )
 }
+
+workflow test_kallisto_quant_multiple {
+
+    input = [
+        [ id:'test', single_end:false ], // meta map
+        [
+            file(params.test_data['sarscov2']['illumina']['test_1_fastq_gz'], checkIfExists: true),
+            file(params.test_data['sarscov2']['illumina']['test_2_fastq_gz'], checkIfExists: true),
+            file(params.test_data['sarscov2']['illumina']['test2_1_fastq_gz'], checkIfExists: true),
+            file(params.test_data['sarscov2']['illumina']['test2_2_fastq_gz'], checkIfExists: true)
+        ]
+    ]
+
+    KALLISTO_INDEX ( fasta )
+    KALLISTO_QUANT (
+        input,
+        KALLISTO_INDEX.out.idx,
+        [],
+        []
+    )
+}
+
+workflow test_kallisto_quant_single_end_multiple {
+    input = [
+        [ id:'test', single_end:true ],
+        [
+            file(params.test_data['sarscov2']['illumina']['test_1_fastq_gz'], checkIfExists: true),
+            file(params.test_data['sarscov2']['illumina']['test2_1_fastq_gz'], checkIfExists: true)
+        ]
+    ]
+
+    KALLISTO_INDEX ( fasta )
+    KALLISTO_QUANT (
+        input,
+        KALLISTO_INDEX.out.idx,
+        [],
+        []
+    )
+}

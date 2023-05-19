@@ -33,3 +33,39 @@
     - path: output/kallisto/test.log.txt
       md5sum: 9c166f0c50cd4fdbdbf1bff9d5d8aba2
     - path: output/kallisto/versions.yml
+
+- name: kallisto quant test_kallisto_quant_multiple
+  command: nextflow run ./tests/modules/nf-core/kallisto/quant -entry test_kallisto_quant_multiple -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/kallisto/quant/nextflow.config
+  tags:
+    - kallisto
+    - kallisto/quant
+  files:
+    - path: output/kallisto/abundance.h5
+    - path: output/kallisto/abundance.tsv
+      md5sum: 6383883321277750fb2bfb43ed6d78b2
+    - path: output/kallisto/kallisto
+      md5sum: ba657b396f8449f5c85b0563cdaa8346
+    - path: output/kallisto/run_info.json
+      contains:
+        - "kallisto_version"
+    - path: output/kallisto/test.log.txt
+      md5sum: a9ba24672a34f5d7af9feb74e95adb14
+    - path: output/kallisto/versions.yml
+
+- name: kallisto quant test_kallisto_quant_single_end_multiple
+  command: nextflow run ./tests/modules/nf-core/kallisto/quant -entry test_kallisto_quant_single_end_multiple -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/kallisto/quant/nextflow.config
+  tags:
+    - kallisto
+    - kallisto/quant
+  files:
+    - path: output/kallisto/abundance.h5
+    - path: output/kallisto/abundance.tsv
+      md5sum: 28895f99d674415b30fdc0ad0c16d590
+    - path: output/kallisto/kallisto
+      md5sum: ba657b396f8449f5c85b0563cdaa8346
+    - path: output/kallisto/run_info.json
+      contains:
+        - "kallisto_version"
+    - path: output/kallisto/test.log.txt
+      md5sum: f2385b558194ad01a4bd2b3e213692f6
+    - path: output/kallisto/versions.yml
