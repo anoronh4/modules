@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    branches: [master]
+    branches: [master,anoronh4:master]
   merge_group:
     types: [checks_requested]
     branches: [master]
